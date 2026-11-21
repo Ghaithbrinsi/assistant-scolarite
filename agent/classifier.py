@@ -1,10 +1,7 @@
 import json, os, re
-from dotenv import load_dotenv
-from openai import OpenAI
+from llm import client, MODEL
 
-load_dotenv()
-client = OpenAI(base_url=os.getenv("OLLAMA_BASE_URL"), api_key="ollama")
-MODEL = os.getenv("MODEL_LOCAL")
+
 
 PROMPT_CLASSIF = """Classe la question d'un étudiant. Réponds UNIQUEMENT avec un JSON valide, sans texte autour :
 {"intention": "...", "module": "..."}

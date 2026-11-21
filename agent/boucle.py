@@ -2,15 +2,10 @@ import json
 import os
 import re
 
-from dotenv import load_dotenv
-from openai import OpenAI
-
+from llm import client, MODEL
 from outils import OUTILS, TOOLS
 from prompts import SYSTEM_PROMPT
 
-load_dotenv()
-client = OpenAI(base_url=os.getenv("OLLAMA_BASE_URL"), api_key="ollama")
-MODEL = os.getenv("MODEL_LOCAL")
 MAX_TOURS = 5
 
 
@@ -77,12 +72,18 @@ def agent(question: str):
 
 
 if __name__ == "__main__":
-    questions = [
-        "C'est quand le rattrapage de bases de données ?",
-        "Quand est l'examen d'Anglais ?",
-        "Quelle est la date du rattrapage de chimie ?",
-        "Raconte-moi une blague",
-    ]
+    import sys
+    if len(sys.argv) > 1:
+        questions = [" ".join(sys.argv[1:])]          # une seule question en argument
+    else:
+        questions = [
+            "J'étais malade le jour de l'examen de bases de données, que dois-je faire ?",
+            "Quelle est la durée minimale du stage ?",
+            "Rédige-moi une demande de rattrapage pour réseaux",
+            "Je m'appelle Test Etudiant, numéro 0000, rédige ma demande de rattrapage pour réseaux",
+            "Y a-t-il un rattrapage pour le projet de fin de module ?",
+            "Quel est le montant de la bourse ?",
+        ]
     for q in questions:
         reponse, trace = agent(q)
         print("Q:", q)
