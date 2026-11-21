@@ -1,0 +1,593 @@
+{
+  "modele": "openai/gpt-oss-120b",
+  "date": "2026-11-21 21:37",
+  "interrompu": false,
+  "resume": {
+    "total": 18,
+    "reussis": 16,
+    "taux": 88.9,
+    "par_categorie": {
+      "factuelle": {
+        "reussis": 16,
+        "total": 18
+      }
+    },
+    "temps_moyen_s": 4.5,
+    "questions_avec_date_inventee": 0,
+    "erreurs_outils": 0,
+    "erreurs_execution": 0
+  },
+  "resultats": [
+    {
+      "id": 1,
+      "categorie": "factuelle",
+      "question": "Quel est le délai pour remettre un certificat médical ?",
+      "reponse": "Le certificat médical doit être remis à la scolarité dans un délai de **3 jours ouvrables** à compter du jour de l’examen manqué (article 4).  \n\nEn cas d’hospitalisation, ce délai est porté à **7 jours ouvrables** (article 6).",
+      "ok": true,
+      "raisons": [],
+      "temps": 7.2,
+      "outils": [
+        "rechercher_reglement"
+      ],
+      "erreurs_outils": 0,
+      "dates_inventees": [],
+      "erreur_execution": "",
+      "trace": [
+        {
+          "etape": "classification",
+          "intention": "reglement",
+          "module": null
+        },
+        {
+          "etape": "appel_outil",
+          "outil": "rechercher_reglement",
+          "args": "{\"question\":\"délai certificat médical\"}",
+          "resultat": "[Article 2] Chapitre 1 : Assiduité et absences | Article 2. Absence justifiée. Une absence est justifiée par un certificat médical, une convocation officielle ou un justificatif de force majeure. Le justificatif est déposé au bureau de la scolarité.\n\n[Article 4] Chapitre 2 : Certificat médical | Article 4. Délai. Le certificat médical est remis à la scolarité dans un délai de 3 jours ouvrables (du lundi au vendredi) à compter du jour de l'examen manqué. Le jour de l'examen n'est pas compté.\n\n[Article 5] Chapitre 2 : Certificat médical | Article 5. Contenu. Le certificat doit être daté du jour de l'examen ou de la veille, signé et tamponné par un médecin, et indiquer la durée d'incapacité. Un certificat de complaisance ou modifié entraîne la saisine du conseil de discipline.\n\n[Article 6] Chapitre 2 : Certificat médical | Article 6. Force majeure. En cas d'hospitalisation, le délai de l'article 4 est porté à 7 jours ouvrables, sur présentation du bulletin d'hospitalisation.\n\n[Article 11] Chapitre 4 : Stages | Article 11. Durée. Le stage de fin d'année dure 8 semaines minimum.",
+          "valide_par_humain": false
+        },
+        {
+          "etape": "reponse_finale"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "categorie": "factuelle",
+      "question": "Quel est le délai pour le justificatif en cas d'hospitalisation ?",
+      "reponse": "Le délai de remise du justificatif en cas d’hospitalisation est de **7 jours ouvrables** à compter du jour de l’examen, conformément à l’**article 6** du règlement.",
+      "ok": true,
+      "raisons": [],
+      "temps": 1.2,
+      "outils": [
+        "rechercher_reglement"
+      ],
+      "erreurs_outils": 0,
+      "dates_inventees": [],
+      "erreur_execution": "",
+      "trace": [
+        {
+          "etape": "classification",
+          "intention": "reglement",
+          "module": null
+        },
+        {
+          "etape": "appel_outil",
+          "outil": "rechercher_reglement",
+          "args": "{\"question\":\"délai certificat médical hospitalisation\"}",
+          "resultat": "[Article 2] Chapitre 1 : Assiduité et absences | Article 2. Absence justifiée. Une absence est justifiée par un certificat médical, une convocation officielle ou un justificatif de force majeure. Le justificatif est déposé au bureau de la scolarité.\n\n[Article 4] Chapitre 2 : Certificat médical | Article 4. Délai. Le certificat médical est remis à la scolarité dans un délai de 3 jours ouvrables (du lundi au vendredi) à compter du jour de l'examen manqué. Le jour de l'examen n'est pas compté.\n\n[Article 5] Chapitre 2 : Certificat médical | Article 5. Contenu. Le certificat doit être daté du jour de l'examen ou de la veille, signé et tamponné par un médecin, et indiquer la durée d'incapacité. Un certificat de complaisance ou modifié entraîne la saisine du conseil de discipline.\n\n[Article 6] Chapitre 2 : Certificat médical | Article 6. Force majeure. En cas d'hospitalisation, le délai de l'article 4 est porté à 7 jours ouvrables, sur présentation du bulletin d'hospitalisation.\n\n[Article 14] Chapitre 4 : Stages | Article 14. Rapport et soutenance. L'étudiant remet un rapport de stage au plus tard 10 jours après la fin du stage, puis le soutient devant un jury.",
+          "valide_par_humain": false
+        },
+        {
+          "etape": "reponse_finale"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "categorie": "factuelle",
+      "question": "À partir de combien d'absences non justifiées ne puis-je plus passer l'examen d'un module ?",
+      "reponse": "Selon l’Article 1 du Chapitre 1 du règlement : « Un étudiant qui cumule **plus de 4 absences non justifiées** dans un module ne peut pas se présenter à l’examen de ce module. »",
+      "ok": true,
+      "raisons": [],
+      "temps": 1.5,
+      "outils": [
+        "rechercher_reglement"
+      ],
+      "erreurs_outils": 0,
+      "dates_inventees": [],
+      "erreur_execution": "",
+      "trace": [
+        {
+          "etape": "classification",
+          "intention": "reglement",
+          "module": null
+        },
+        {
+          "etape": "appel_outil",
+          "outil": "rechercher_reglement",
+          "args": "{\"question\":\"absences non justifiées examen limite\"}",
+          "resultat": "[Article 1] Chapitre 1 : Assiduité et absences | Article 1. Présence. La présence aux cours, travaux dirigés et travaux pratiques est obligatoire. Un étudiant qui cumule plus de 4 absences non justifiées dans un module ne peut pas se présenter à l'examen de ce module.\n\n[Article 2] Chapitre 1 : Assiduité et absences | Article 2. Absence justifiée. Une absence est justifiée par un certificat médical, une convocation officielle ou un justificatif de force majeure. Le justificatif est déposé au bureau de la scolarité.\n\n[Article 3] Chapitre 1 : Assiduité et absences | Article 3. Absence à un examen. Un étudiant absent à un examen sans justificatif valable reçoit la note de 0/20 et n'a pas droit au rattrapage.\n\n[Article 7] Chapitre 3 : Examens et rattrapages | Article 7. Session de rattrapage. Un étudiant dont l'absence a été justifiée selon les articles 4 à 6 passe l'examen à la session de rattrapage, aux dates du calendrier officiel.\n\n[Article 8] Chapitre 3 : Examens et rattrapages | Article 8. Demande de rattrapage. L'étudiant dépose une demande écrite adressée au responsable de scolarité, avec le justificatif joint, en indiquant son nom, son numéro d'étudiant, le module concerné et la date de l'examen manqué.",
+          "valide_par_humain": false
+        },
+        {
+          "etape": "reponse_finale"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "categorie": "factuelle",
+      "question": "Que doit contenir un certificat médical pour être valable ?",
+      "reponse": "Selon l’article 5 du règlement : le certificat médical doit être daté du jour de l’examen ou de la veille, signé et tamponné par un médecin, et indiquer la durée d’incapacité. Un certificat de complaisance ou modifié entraîne la saisine du conseil de discipline.",
+      "ok": true,
+      "raisons": [],
+      "temps": 1.3,
+      "outils": [
+        "rechercher_reglement"
+      ],
+      "erreurs_outils": 0,
+      "dates_inventees": [],
+      "erreur_execution": "",
+      "trace": [
+        {
+          "etape": "classification",
+          "intention": "reglement",
+          "module": null
+        },
+        {
+          "etape": "appel_outil",
+          "outil": "rechercher_reglement",
+          "args": "{\"question\":\"contenu certificat médical valable\"}",
+          "resultat": "[Article 2] Chapitre 1 : Assiduité et absences | Article 2. Absence justifiée. Une absence est justifiée par un certificat médical, une convocation officielle ou un justificatif de force majeure. Le justificatif est déposé au bureau de la scolarité.\n\n[Article 3] Chapitre 1 : Assiduité et absences | Article 3. Absence à un examen. Un étudiant absent à un examen sans justificatif valable reçoit la note de 0/20 et n'a pas droit au rattrapage.\n\n[Article 4] Chapitre 2 : Certificat médical | Article 4. Délai. Le certificat médical est remis à la scolarité dans un délai de 3 jours ouvrables (du lundi au vendredi) à compter du jour de l'examen manqué. Le jour de l'examen n'est pas compté.\n\n[Article 5] Chapitre 2 : Certificat médical | Article 5. Contenu. Le certificat doit être daté du jour de l'examen ou de la veille, signé et tamponné par un médecin, et indiquer la durée d'incapacité. Un certificat de complaisance ou modifié entraîne la saisine du conseil de discipline.\n\n[Article 6] Chapitre 2 : Certificat médical | Article 6. Force majeure. En cas d'hospitalisation, le délai de l'article 4 est porté à 7 jours ouvrables, sur présentation du bulletin d'hospitalisation.",
+          "valide_par_humain": false
+        },
+        {
+          "etape": "reponse_finale"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "categorie": "factuelle",
+      "question": "Que se passe-t-il si je rate un examen sans justificatif ?",
+      "reponse": "Selon l’Article 3 du Chapitre 1 « Absence à un examen », un étudiant absent à un examen sans justificatif valable reçoit la note de 0/20 et n’a pas droit au rattrapage.",
+      "ok": true,
+      "raisons": [],
+      "temps": 1.7,
+      "outils": [
+        "rechercher_reglement"
+      ],
+      "erreurs_outils": 0,
+      "dates_inventees": [],
+      "erreur_execution": "",
+      "trace": [
+        {
+          "etape": "classification",
+          "intention": "reglement",
+          "module": null
+        },
+        {
+          "etape": "appel_outil",
+          "outil": "rechercher_reglement",
+          "args": "{\"question\":\"absence sans justificatif examen\"}",
+          "resultat": "[Article 1] Chapitre 1 : Assiduité et absences | Article 1. Présence. La présence aux cours, travaux dirigés et travaux pratiques est obligatoire. Un étudiant qui cumule plus de 4 absences non justifiées dans un module ne peut pas se présenter à l'examen de ce module.\n\n[Article 2] Chapitre 1 : Assiduité et absences | Article 2. Absence justifiée. Une absence est justifiée par un certificat médical, une convocation officielle ou un justificatif de force majeure. Le justificatif est déposé au bureau de la scolarité.\n\n[Article 3] Chapitre 1 : Assiduité et absences | Article 3. Absence à un examen. Un étudiant absent à un examen sans justificatif valable reçoit la note de 0/20 et n'a pas droit au rattrapage.\n\n[Article 7] Chapitre 3 : Examens et rattrapages | Article 7. Session de rattrapage. Un étudiant dont l'absence a été justifiée selon les articles 4 à 6 passe l'examen à la session de rattrapage, aux dates du calendrier officiel.\n\n[Article 8] Chapitre 3 : Examens et rattrapages | Article 8. Demande de rattrapage. L'étudiant dépose une demande écrite adressée au responsable de scolarité, avec le justificatif joint, en indiquant son nom, son numéro d'étudiant, le module concerné et la date de l'examen manqué.",
+          "valide_par_humain": false
+        },
+        {
+          "etape": "reponse_finale"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "categorie": "factuelle",
+      "question": "Quelle est la durée minimale du stage de fin d'année ?",
+      "reponse": "Selon l'article 11 du règlement des études, le stage de fin d’année doit durer **au moins 8 semaines**.",
+      "ok": true,
+      "raisons": [],
+      "temps": 1.4,
+      "outils": [
+        "rechercher_reglement"
+      ],
+      "erreurs_outils": 0,
+      "dates_inventees": [],
+      "erreur_execution": "",
+      "trace": [
+        {
+          "etape": "classification",
+          "intention": "reglement",
+          "module": null
+        },
+        {
+          "etape": "appel_outil",
+          "outil": "rechercher_reglement",
+          "args": "{\"question\":\"durée stage\"}",
+          "resultat": "[Article 10] Chapitre 3 : Examens et rattrapages | Article 10. Modules sans rattrapage. Les modules évalués uniquement par projet ne comportent pas de session de rattrapage. Le calendrier précise ces modules.\n\n[Article 11] Chapitre 4 : Stages | Article 11. Durée. Le stage de fin d'année dure 8 semaines minimum.\n\n[Article 12] Chapitre 4 : Stages | Article 12. Convention. Le stage ne peut commencer qu'après la signature de la convention de stage par l'étudiant, l'entreprise et l'institut. La convention est déposée à la scolarité au moins 15 jours avant le début du stage.\n\n[Article 13] Chapitre 4 : Stages | Article 13. Dérogation. Une dérogation au délai de l'article 12 peut être accordée par le chef de département. ISET Charguia – Règlement des études 2026-2027 (document fictif) Page 2\n\n[Article 14] Chapitre 4 : Stages | Article 14. Rapport et soutenance. L'étudiant remet un rapport de stage au plus tard 10 jours après la fin du stage, puis le soutient devant un jury.",
+          "valide_par_humain": false
+        },
+        {
+          "etape": "reponse_finale"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "categorie": "factuelle",
+      "question": "Combien de jours avant le début du stage faut-il déposer la convention ?",
+      "reponse": "Selon l'article 12 du règlement des études, la convention de stage doit être déposée à la scolarité **au moins 15 jours avant le début du stage**.",
+      "ok": true,
+      "raisons": [],
+      "temps": 1.3,
+      "outils": [
+        "rechercher_reglement"
+      ],
+      "erreurs_outils": 0,
+      "dates_inventees": [],
+      "erreur_execution": "",
+      "trace": [
+        {
+          "etape": "classification",
+          "intention": "reglement",
+          "module": null
+        },
+        {
+          "etape": "appel_outil",
+          "outil": "rechercher_reglement",
+          "args": "{\"question\":\"délai dépôt convention stage avant début\"}",
+          "resultat": "[Article 11] Chapitre 4 : Stages | Article 11. Durée. Le stage de fin d'année dure 8 semaines minimum.\n\n[Article 12] Chapitre 4 : Stages | Article 12. Convention. Le stage ne peut commencer qu'après la signature de la convention de stage par l'étudiant, l'entreprise et l'institut. La convention est déposée à la scolarité au moins 15 jours avant le début du stage.\n\n[Article 13] Chapitre 4 : Stages | Article 13. Dérogation. Une dérogation au délai de l'article 12 peut être accordée par le chef de département. ISET Charguia – Règlement des études 2026-2027 (document fictif) Page 2\n\n[Article 14] Chapitre 4 : Stages | Article 14. Rapport et soutenance. L'étudiant remet un rapport de stage au plus tard 10 jours après la fin du stage, puis le soutient devant un jury.\n\n[Article 15] Chapitre 5 : Dispositions finales | Article 15. Réclamations. Toute réclamation sur une note est adressée par écrit au responsable de scolarité dans les 5 jours ouvrables suivant la publication des résultats.",
+          "valide_par_humain": false
+        },
+        {
+          "etape": "reponse_finale"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "categorie": "factuelle",
+      "question": "Dans quel délai dois-je remettre mon rapport de stage ?",
+      "reponse": "Selon l'article 14 du chapitre 4 du règlement des études, vous devez remettre votre rapport de stage au plus tard **10 jours après la fin du stage**.",
+      "ok": true,
+      "raisons": [],
+      "temps": 1.6,
+      "outils": [
+        "rechercher_reglement"
+      ],
+      "erreurs_outils": 0,
+      "dates_inventees": [],
+      "erreur_execution": "",
+      "trace": [
+        {
+          "etape": "classification",
+          "intention": "reglement",
+          "module": null
+        },
+        {
+          "etape": "appel_outil",
+          "outil": "rechercher_reglement",
+          "args": "{\"question\":\"délai rapport de stage\"}",
+          "resultat": "[Article 4] Chapitre 2 : Certificat médical | Article 4. Délai. Le certificat médical est remis à la scolarité dans un délai de 3 jours ouvrables (du lundi au vendredi) à compter du jour de l'examen manqué. Le jour de l'examen n'est pas compté.\n\n[Article 11] Chapitre 4 : Stages | Article 11. Durée. Le stage de fin d'année dure 8 semaines minimum.\n\n[Article 12] Chapitre 4 : Stages | Article 12. Convention. Le stage ne peut commencer qu'après la signature de la convention de stage par l'étudiant, l'entreprise et l'institut. La convention est déposée à la scolarité au moins 15 jours avant le début du stage.\n\n[Article 13] Chapitre 4 : Stages | Article 13. Dérogation. Une dérogation au délai de l'article 12 peut être accordée par le chef de département. ISET Charguia – Règlement des études 2026-2027 (document fictif) Page 2\n\n[Article 14] Chapitre 4 : Stages | Article 14. Rapport et soutenance. L'étudiant remet un rapport de stage au plus tard 10 jours après la fin du stage, puis le soutient devant un jury.",
+          "valide_par_humain": false
+        },
+        {
+          "etape": "reponse_finale"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "categorie": "factuelle",
+      "question": "Dans quel délai puis-je faire une réclamation sur une note ?",
+      "reponse": "Selon l’article 15 du règlement, toute réclamation sur une note doit être adressée par écrit au responsable de scolarité **dans les 5 jours ouvrables suivant la publication des résultats**.",
+      "ok": true,
+      "raisons": [],
+      "temps": 2.3,
+      "outils": [
+        "rechercher_reglement"
+      ],
+      "erreurs_outils": 0,
+      "dates_inventees": [],
+      "erreur_execution": "",
+      "trace": [
+        {
+          "etape": "classification",
+          "intention": "reglement",
+          "module": null
+        },
+        {
+          "etape": "appel_outil",
+          "outil": "rechercher_reglement",
+          "args": "{\"question\":\"délai réclamation note\"}",
+          "resultat": "[Article 3] Chapitre 1 : Assiduité et absences | Article 3. Absence à un examen. Un étudiant absent à un examen sans justificatif valable reçoit la note de 0/20 et n'a pas droit au rattrapage.\n\n[Article 6] Chapitre 2 : Certificat médical | Article 6. Force majeure. En cas d'hospitalisation, le délai de l'article 4 est porté à 7 jours ouvrables, sur présentation du bulletin d'hospitalisation.\n\n[Article 8] Chapitre 3 : Examens et rattrapages | Article 8. Demande de rattrapage. L'étudiant dépose une demande écrite adressée au responsable de scolarité, avec le justificatif joint, en indiquant son nom, son numéro d'étudiant, le module concerné et la date de l'examen manqué.\n\n[Article 14] Chapitre 4 : Stages | Article 14. Rapport et soutenance. L'étudiant remet un rapport de stage au plus tard 10 jours après la fin du stage, puis le soutient devant un jury.\n\n[Article 15] Chapitre 5 : Dispositions finales | Article 15. Réclamations. Toute réclamation sur une note est adressée par écrit au responsable de scolarité dans les 5 jours ouvrables suivant la publication des résultats.",
+          "valide_par_humain": false
+        },
+        {
+          "etape": "reponse_finale"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "categorie": "factuelle",
+      "question": "La note du rattrapage remplace-t-elle celle de l'examen initial ?",
+      "reponse": "Oui. Selon l’**Article 9** du règlement (« Notes »), la note obtenue au rattrapage remplace la note de l’examen initial.",
+      "ok": true,
+      "raisons": [],
+      "temps": 7.8,
+      "outils": [
+        "rechercher_reglement"
+      ],
+      "erreurs_outils": 0,
+      "dates_inventees": [],
+      "erreur_execution": "",
+      "trace": [
+        {
+          "etape": "classification",
+          "intention": "reglement",
+          "module": null
+        },
+        {
+          "etape": "appel_outil",
+          "outil": "rechercher_reglement",
+          "args": "{\"question\":\"note rattrapage remplace examen\"}",
+          "resultat": "[Article 3] Chapitre 1 : Assiduité et absences | Article 3. Absence à un examen. Un étudiant absent à un examen sans justificatif valable reçoit la note de 0/20 et n'a pas droit au rattrapage.\n\n[Article 7] Chapitre 3 : Examens et rattrapages | Article 7. Session de rattrapage. Un étudiant dont l'absence a été justifiée selon les articles 4 à 6 passe l'examen à la session de rattrapage, aux dates du calendrier officiel.\n\n[Article 8] Chapitre 3 : Examens et rattrapages | Article 8. Demande de rattrapage. L'étudiant dépose une demande écrite adressée au responsable de scolarité, avec le justificatif joint, en indiquant son nom, son numéro d'étudiant, le module concerné et la date de l'examen manqué.\n\n[Article 9] Chapitre 3 : Examens et rattrapages | Article 9. Notes. La note obtenue au rattrapage remplace la note de l'examen initial.\n\n[Article 10] Chapitre 3 : Examens et rattrapages | Article 10. Modules sans rattrapage. Les modules évalués uniquement par projet ne comportent pas de session de rattrapage. Le calendrier précise ces modules.",
+          "valide_par_humain": false
+        },
+        {
+          "etape": "reponse_finale"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "categorie": "factuelle",
+      "question": "Je m'appelle Test Etudiant, numéro 0000, rédige ma demande de rattrapage pour bases de données",
+      "reponse": "[BROUILLON – NON ENVOYÉ]\n\nÀ l'attention du Responsable de scolarité – ISET Charguia\n\nObjet : Demande de session de rattrapage – module « bases de données »\n\nMadame, Monsieur,\n\nJe soussigné(e) Test Etudiant, numéro d'étudiant 0000, n'ai pas pu me présenter à l'examen du module « bases de données » prévu le 08/01/2027. Conformément aux articles 7 et 8 du règlement des études, je sollicite le passage de cet examen à la session de rattrapage (15/01/2027 à 9h, salle B12).\n\nVous trouverez ci-joint mon justificatif : certificat médical.\n\nJe vous prie d'agréer, Madame, Monsieur, l'expression de mes salutations distinguées.\n\nTest Etudiant",
+      "ok": true,
+      "raisons": [],
+      "temps": 26.1,
+      "outils": [
+        "generer_demande"
+      ],
+      "erreurs_outils": 0,
+      "dates_inventees": [],
+      "erreur_execution": "",
+      "trace": [
+        {
+          "etape": "classification",
+          "intention": "demande",
+          "module": "bases de données"
+        },
+        {
+          "etape": "appel_outil",
+          "outil": "generer_demande",
+          "args": "{\"justificatif\":\"certificat médical\",\"module\":\"bases de données\",\"nom\":\"Test Etudiant\",\"numero_etudiant\":\"0000\"}",
+          "resultat": "[BROUILLON – NON ENVOYÉ]\n\nÀ l'attention du Responsable de scolarité – ISET Charguia\n\nObjet : Demande de session de rattrapage – module « bases de données »\n\nMadame, Monsieur,\n\nJe soussigné(e) Test Etudiant, numéro d'étudiant 0000, n'ai pas pu me présenter à l'examen du module « bases de données » prévu le 08/01/2027. Conformément aux articles 7 et 8 du règlement des études, je sollicite le passage de cet examen à la session de rattrapage (15/01/2027 à 9h, salle B12).\n\nVous trouverez ci-joint mon justificatif : certificat médical.\n\nJe vous prie d'agréer, Madame, Monsieur, l'expression de mes salutations distinguées.\n\nTest Etudiant",
+          "valide_par_humain": true
+        },
+        {
+          "etape": "reponse_finale"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "categorie": "factuelle",
+      "question": "Rédige-moi une demande de rattrapage pour réseaux",
+      "reponse": "Pour rédiger votre demande de rattrapage, j’ai besoin de votre nom complet et de votre numéro d’étudiant. Merci de me les communiquer.",
+      "ok": true,
+      "raisons": [],
+      "temps": 0.8,
+      "outils": [],
+      "erreurs_outils": 0,
+      "dates_inventees": [],
+      "erreur_execution": "",
+      "trace": [
+        {
+          "etape": "classification",
+          "intention": "demande",
+          "module": "réseaux"
+        },
+        {
+          "etape": "reponse_finale"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "categorie": "factuelle",
+      "question": "C'est quand l'examen d'algorithmique ?",
+      "reponse": "L’examen d’algorithmique aura lieu le **05/01/2027** à 9 h, amphithéâtre A. Le rattrapage est prévu le **13/01/2027** à 14 h, salle B10.",
+      "ok": false,
+      "raisons": [
+        "informations attendues absentes"
+      ],
+      "temps": 1.1,
+      "outils": [
+        "get_calendrier"
+      ],
+      "erreurs_outils": 0,
+      "dates_inventees": [],
+      "erreur_execution": "",
+      "trace": [
+        {
+          "etape": "classification",
+          "intention": "calendrier",
+          "module": "algorithmique"
+        },
+        {
+          "etape": "appel_outil",
+          "outil": "get_calendrier",
+          "args": "{\"module\":\"algorithmique\"}",
+          "resultat": "Module : algorithmique. Examen : 05/01/2027 à 9h, amphi A. Rattrapage : 13/01/2027 à 14h, salle B10.",
+          "valide_par_humain": false
+        },
+        {
+          "etape": "reponse_finale"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "categorie": "factuelle",
+      "question": "Quelle est la date et la salle du rattrapage de bases de données ?",
+      "reponse": "Le rattrapage du module **bases de données** aura lieu le **15/01/2027** à **9 h**, salle **B12**.",
+      "ok": true,
+      "raisons": [],
+      "temps": 1.3,
+      "outils": [
+        "get_calendrier"
+      ],
+      "erreurs_outils": 0,
+      "dates_inventees": [],
+      "erreur_execution": "",
+      "trace": [
+        {
+          "etape": "classification",
+          "intention": "calendrier",
+          "module": "bases de données"
+        },
+        {
+          "etape": "appel_outil",
+          "outil": "get_calendrier",
+          "args": "{\"module\":\"bases de données\"}",
+          "resultat": "Module : bases de données. Examen : 08/01/2027 à 9h, amphi A. Rattrapage : 15/01/2027 à 9h, salle B12.",
+          "valide_par_humain": false
+        },
+        {
+          "etape": "reponse_finale"
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "categorie": "factuelle",
+      "question": "Où et quand a lieu l'examen de réseaux ?",
+      "reponse": "L’examen du module **réseaux** aura lieu le **11/01/2027** à **9h** dans l’amphi B. Le rattrapage est prévu le **18/01/2027** à **9h** en salle B14.",
+      "ok": true,
+      "raisons": [],
+      "temps": 2.2,
+      "outils": [
+        "get_calendrier"
+      ],
+      "erreurs_outils": 0,
+      "dates_inventees": [],
+      "erreur_execution": "",
+      "trace": [
+        {
+          "etape": "classification",
+          "intention": "calendrier",
+          "module": "réseaux"
+        },
+        {
+          "etape": "appel_outil",
+          "outil": "get_calendrier",
+          "args": "{\"module\":\"réseaux\"}",
+          "resultat": "Module : réseaux. Examen : 11/01/2027 à 9h, amphi B. Rattrapage : 18/01/2027 à 9h, salle B14.",
+          "valide_par_humain": false
+        },
+        {
+          "etape": "reponse_finale"
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "categorie": "factuelle",
+      "question": "À quelle heure et dans quelle salle est le rattrapage d'anglais ?",
+      "reponse": "Le rattrapage d’anglais aura lieu le 19/01/2027 à 10h, salle B11.",
+      "ok": true,
+      "raisons": [],
+      "temps": 7.5,
+      "outils": [
+        "get_calendrier"
+      ],
+      "erreurs_outils": 0,
+      "dates_inventees": [],
+      "erreur_execution": "",
+      "trace": [
+        {
+          "etape": "classification",
+          "intention": "calendrier",
+          "module": "anglais"
+        },
+        {
+          "etape": "appel_outil",
+          "outil": "get_calendrier",
+          "args": "{\"module\":\"anglais\"}",
+          "resultat": "Module : anglais. Examen : 12/01/2027 à 14h, salle B11. Rattrapage : 19/01/2027 à 10h, salle B11.",
+          "valide_par_humain": false
+        },
+        {
+          "etape": "reponse_finale"
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "categorie": "factuelle",
+      "question": "Quand dois-je remettre le projet de fin de module ?",
+      "reponse": "Vous devez remettre le projet de fin de module le **20/01/2027**.",
+      "ok": true,
+      "raisons": [],
+      "temps": 7.5,
+      "outils": [
+        "get_calendrier"
+      ],
+      "erreurs_outils": 0,
+      "dates_inventees": [],
+      "erreur_execution": "",
+      "trace": [
+        {
+          "etape": "classification",
+          "intention": "calendrier",
+          "module": "projet de fin de module"
+        },
+        {
+          "etape": "appel_outil",
+          "outil": "get_calendrier",
+          "args": "{\"module\":\"projet de fin de module\"}",
+          "resultat": "Module : projet de fin de module. Examen : Remise le 20/01/2027. Rattrapage : Pas de rattrapage.",
+          "valide_par_humain": false
+        },
+        {
+          "etape": "reponse_finale"
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "categorie": "factuelle",
+      "question": "Donne-moi les dates d'examen et de rattrapage de réseaux.",
+      "reponse": "Examen de réseaux : 11/01/2027  \nRattrapage de réseaux : 18/01/2027",
+      "ok": false,
+      "raisons": [
+        "informations attendues absentes"
+      ],
+      "temps": 7.3,
+      "outils": [
+        "get_calendrier"
+      ],
+      "erreurs_outils": 0,
+      "dates_inventees": [],
+      "erreur_execution": "",
+      "trace": [
+        {
+          "etape": "classification",
+          "intention": "calendrier",
+          "module": "réseaux"
+        },
+        {
+          "etape": "appel_outil",
+          "outil": "get_calendrier",
+          "args": "{\"module\":\"réseaux\"}",
+          "resultat": "Module : réseaux. Examen : 11/01/2027 à 9h, amphi B. Rattrapage : 18/01/2027 à 9h, salle B14.",
+          "valide_par_humain": false
+        },
+        {
+          "etape": "reponse_finale"
+        }
+      ]
+    }
+  ]
+}

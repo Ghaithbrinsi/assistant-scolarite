@@ -1,0 +1,16 @@
+{
+  "modele": "openai/gpt-oss-20b",
+  "date": "2026-11-21 21:53",
+  "interrompu": true,
+  "resume": {
+    "total": 0,
+    "reussis": 0,
+    "taux": 0,
+    "par_categorie": {},
+    "temps_moyen_s": 0,
+    "questions_avec_date_inventee": 0,
+    "erreurs_outils": 0,
+    "erreurs_execution": 0
+  },
+  "resultats": []
+}

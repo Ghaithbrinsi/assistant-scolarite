@@ -1,0 +1,68 @@
+{
+  "modele": "openai/gpt-oss-20b",
+  "date": "2026-11-21 21:54",
+  "interrompu": true,
+  "resume": {
+    "total": 2,
+    "reussis": 2,
+    "taux": 100.0,
+    "par_categorie": {
+      "hors_sujet": {
+        "reussis": 2,
+        "total": 2
+      }
+    },
+    "temps_moyen_s": 14.2,
+    "questions_avec_date_inventee": 0,
+    "erreurs_outils": 0,
+    "erreurs_execution": 0
+  },
+  "resultats": [
+    {
+      "id": 19,
+      "categorie": "hors_sujet",
+      "question": "Raconte-moi une blague",
+      "reponse": "Je ne peux répondre qu'aux questions sur le règlement des études et le calendrier des examens.",
+      "ok": true,
+      "raisons": [],
+      "temps": 0.7,
+      "outils": [],
+      "erreurs_outils": 0,
+      "dates_inventees": [],
+      "erreur_execution": "",
+      "trace": [
+        {
+          "etape": "classification",
+          "intention": "hors_sujet",
+          "module": null
+        },
+        {
+          "etape": "refus_hors_sujet"
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "categorie": "hors_sujet",
+      "question": "Donne-moi une recette de couscous",
+      "reponse": "Je ne peux répondre qu'aux questions sur le règlement des études et le calendrier des examens.",
+      "ok": true,
+      "raisons": [],
+      "temps": 27.7,
+      "outils": [],
+      "erreurs_outils": 0,
+      "dates_inventees": [],
+      "erreur_execution": "",
+      "trace": [
+        {
+          "etape": "classification",
+          "intention": "hors_sujet",
+          "module": null
+        },
+        {
+          "etape": "refus_hors_sujet"
+        }
+      ]
+    }
+  ]
+}
