@@ -1,31 +1,42 @@
 import json
-import os
 import re
 
-from llm import client, MODEL
-from outils import OUTILS, TOOLS
+from llm import MODEL, client
+from mcp_client import get_mcp
 from prompts import SYSTEM_PROMPT
 
 MAX_TOURS = 5
+SENSIBLES = {"generer_demande"}   # actions qui exigent la validation de l'étudiant
+REFUS_HUMAIN = "Action refusée par l'étudiant : rien n'a été généré ni envoyé."
+
+_TOOLS = None
+
+
+def get_tools() -> list[dict]:
+    """Outils décrits par le serveur MCP (chargés une seule fois)."""
+    global _TOOLS
+    if _TOOLS is None:
+        _TOOLS = get_mcp().lister_outils()
+    return _TOOLS
 
 
 def nettoyer(texte: str) -> str:
-    """Supprime les balises <think>...</think> de Qwen3."""
+    """Supprime les balises <think>...</think> éventuelles."""
     return re.sub(r"<think>.*?</think>", "", texte or "", flags=re.DOTALL).strip()
 
 
 def executer_outil(nom: str, arguments_json: str) -> str:
-    """LE PROGRAMME AGIT ICI : exécution contrôlée de l'outil demandé par le modèle."""
-    if nom not in OUTILS:
+    """LE PROGRAMME AGIT ICI : l'outil demandé par le modèle est appelé via le serveur MCP."""
+    if nom not in {t["function"]["name"] for t in get_tools()}:
         return f"Erreur : outil inconnu '{nom}'."
     try:
         args = json.loads(arguments_json or "{}")
     except json.JSONDecodeError:
         return "Erreur : arguments JSON invalides."
-    try:
-        return str(OUTILS[nom](**args))
-    except TypeError as e:
-        return f"Erreur : arguments incorrects ({e})."
+    if not isinstance(args, dict):
+        return "Erreur : arguments JSON invalides."
+    return get_mcp().appeler(nom, args)
+
 
 def finaliser(reponse: str, trace: list) -> str:
     """Si un brouillon de demande a été généré, on renvoie le texte EXACT de l'outil."""
@@ -34,44 +45,44 @@ def finaliser(reponse: str, trace: list) -> str:
             return t["resultat"]
     return reponse
 
-def agent(question: str):
-    """Retourne (réponse finale, trace des étapes)."""
-    messages = [
-        {"role": "system", "content": SYSTEM_PROMPT},
-        {"role": "user", "content": question},
-    ]
+
+def confirmer_cli(action: dict) -> bool:
+    """Validation humaine en ligne de commande."""
+    print(f"\n[ACTION SENSIBLE] L'agent veut appeler : {action['outil']}")
+    print(f"   Arguments : {action['args']}")
+    return input("   Valider ? (o/n) ").strip().lower() in ("o", "oui", "y")
+
+
+def agent(question: str, confirmer=confirmer_cli):
+    """Boucle manuelle (sans LangGraph). Retourne (réponse finale, trace)."""
+    messages = [{"role": "system", "content": SYSTEM_PROMPT},
+                {"role": "user", "content": question}]
     trace = []
 
     for tour in range(MAX_TOURS):
-        # LE MODÈLE DÉCIDE ICI : réponse finale ou demande d'outil
+        # LE MODÈLE DÉCIDE ICI
         msg = client.chat.completions.create(
-            model=MODEL, messages=messages, tools=TOOLS, temperature=0
+            model=MODEL, messages=messages, tools=get_tools(), temperature=0
         ).choices[0].message
 
         if not msg.tool_calls:
-            trace.append({"etape": "reponse_finale", "tour": tour + 1})
+            trace.append({"etape": "reponse_finale"})
             return finaliser(nettoyer(msg.content), trace), trace
 
-        # On rejoue la demande du modèle dans l'historique (format dict simple)
         messages.append({
-            "role": "assistant",
-            "content": msg.content or "",
-            "tool_calls": [
-                {"id": c.id, "type": "function",
-                 "function": {"name": c.function.name, "arguments": c.function.arguments}}
-                for c in msg.tool_calls
-            ],
+            "role": "assistant", "content": msg.content or "",
+            "tool_calls": [{"id": c.id, "type": "function",
+                            "function": {"name": c.function.name, "arguments": c.function.arguments}}
+                           for c in msg.tool_calls],
         })
-
         for call in msg.tool_calls:
-            resultat = executer_outil(call.function.name, call.function.arguments)
-            trace.append({
-                "etape": "appel_outil",
-                "tour": tour + 1,
-                "outil": call.function.name,
-                "args": call.function.arguments,
-                "resultat": resultat,
-            })
+            nom, args = call.function.name, call.function.arguments
+            if nom in SENSIBLES and not confirmer({"outil": nom, "args": args}):
+                resultat = REFUS_HUMAIN
+                trace.append({"etape": "refus_humain", "outil": nom})
+            else:
+                resultat = executer_outil(nom, args)
+                trace.append({"etape": "appel_outil", "outil": nom, "args": args, "resultat": resultat})
             messages.append({"role": "tool", "tool_call_id": call.id, "content": resultat})
 
     return "Je n'ai pas pu terminer la tâche.", trace
@@ -79,20 +90,8 @@ def agent(question: str):
 
 if __name__ == "__main__":
     import sys
-    if len(sys.argv) > 1:
-        questions = [" ".join(sys.argv[1:])]          # une seule question en argument
-    else:
-        questions = [
-            "J'étais malade le jour de l'examen de bases de données, que dois-je faire ?",
-            "Quelle est la durée minimale du stage ?",
-            "Rédige-moi une demande de rattrapage pour réseaux",
-            "Je m'appelle Test Etudiant, numéro 0000, rédige ma demande de rattrapage pour réseaux",
-            "Y a-t-il un rattrapage pour le projet de fin de module ?",
-            "Quel est le montant de la bourse ?",
-        ]
-    for q in questions:
-        reponse, trace = agent(q)
-        print("Q:", q)
-        for t in trace:
-            print("   trace:", t)
-        print("R:", reponse, "\n")
+    q = " ".join(sys.argv[1:]) or "Quelle est la durée minimale du stage ?"
+    reponse, trace = agent(q)
+    for t in trace:
+        print("   trace:", t)
+    print("R:", reponse)
