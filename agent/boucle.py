@@ -27,6 +27,12 @@ def executer_outil(nom: str, arguments_json: str) -> str:
     except TypeError as e:
         return f"Erreur : arguments incorrects ({e})."
 
+def finaliser(reponse: str, trace: list) -> str:
+    """Si un brouillon de demande a été généré, on renvoie le texte EXACT de l'outil."""
+    for t in reversed(trace):
+        if t.get("outil") == "generer_demande" and t.get("resultat", "").startswith("[BROUILLON"):
+            return t["resultat"]
+    return reponse
 
 def agent(question: str):
     """Retourne (réponse finale, trace des étapes)."""
@@ -44,7 +50,7 @@ def agent(question: str):
 
         if not msg.tool_calls:
             trace.append({"etape": "reponse_finale", "tour": tour + 1})
-            return nettoyer(msg.content), trace
+            return finaliser(nettoyer(msg.content), trace), trace
 
         # On rejoue la demande du modèle dans l'historique (format dict simple)
         messages.append({

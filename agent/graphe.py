@@ -2,7 +2,7 @@ from typing import TypedDict
 
 from langgraph.graph import END, StateGraph
 
-from boucle import MAX_TOURS, executer_outil, nettoyer
+from boucle import MAX_TOURS, executer_outil, finaliser, nettoyer
 from classifier import classifier
 from llm import MODEL, client
 from outils import TOOLS
@@ -91,7 +91,8 @@ def agent_graphe(question: str):
         "messages": [{"role": "system", "content": SYSTEM_PROMPT},
                      {"role": "user", "content": question}],
     })
-    return etat["reponse"] or "Je n'ai pas pu terminer la tâche.", etat["trace"]
+    reponse = finaliser(etat["reponse"] or "Je n'ai pas pu terminer la tâche.", etat["trace"])
+    return reponse, etat["trace"]
 
 
 if __name__ == "__main__":
