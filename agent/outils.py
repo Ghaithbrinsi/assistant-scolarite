@@ -53,7 +53,7 @@ def calculer_delai(module: str, hospitalisation=False) -> str:
     articles = "articles 4 et 6" if hospitalisation else "article 4"
     return (f"Examen du {date_exam:%d/%m/%Y}. Date limite de remise du justificatif à la scolarité : "
             f"{courant:%d/%m/%Y} ({jours} jours ouvrables du lundi au vendredi, le jour de l'examen "
-            f"n'étant pas compté, {articles}). Rattrapage : {d['rattrapage']}.")
+            f"n'étant pas compté, {articles}). Rattrapage (article 7) : {d['rattrapage']}.")
 
 
 def generer_demande(nom: str, numero_etudiant: str, module: str,
