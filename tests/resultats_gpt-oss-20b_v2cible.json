@@ -1,0 +1,118 @@
+{
+  "modele": "openai/gpt-oss-20b",
+  "date": "2026-11-21 20:49",
+  "interrompu": true,
+  "resume": {
+    "total": 3,
+    "reussis": 3,
+    "taux": 100.0,
+    "par_categorie": {
+      "factuelle": {
+        "reussis": 3,
+        "total": 3
+      }
+    },
+    "temps_moyen_s": 3.3,
+    "questions_avec_date_inventee": 0,
+    "erreurs_outils": 0,
+    "erreurs_execution": 0
+  },
+  "resultats": [
+    {
+      "id": 13,
+      "categorie": "factuelle",
+      "question": "C'est quand l'examen d'algorithmique ?",
+      "reponse": "Examen d’algorithmique : 05/01/2027 à 9h, amphi A.",
+      "ok": true,
+      "raisons": [],
+      "temps": 7.3,
+      "outils": [
+        "get_calendrier"
+      ],
+      "erreurs_outils": 0,
+      "dates_inventees": [],
+      "erreur_execution": "",
+      "trace": [
+        {
+          "etape": "classification",
+          "intention": "calendrier",
+          "module": "algorithmique"
+        },
+        {
+          "etape": "appel_outil",
+          "outil": "get_calendrier",
+          "args": "{\"module\":\"algorithmique\"}",
+          "resultat": "Module : algorithmique. Examen : 05/01/2027 à 9h, amphi A. Rattrapage : 13/01/2027 à 14h, salle B10.",
+          "valide_par_humain": false
+        },
+        {
+          "etape": "reponse_finale"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "categorie": "factuelle",
+      "question": "Quelle est la date et la salle du rattrapage de bases de données ?",
+      "reponse": "Rattrapage : 15/01/2027 à 9h, salle B12.",
+      "ok": true,
+      "raisons": [],
+      "temps": 1.5,
+      "outils": [
+        "get_calendrier"
+      ],
+      "erreurs_outils": 0,
+      "dates_inventees": [],
+      "erreur_execution": "",
+      "trace": [
+        {
+          "etape": "classification",
+          "intention": "calendrier",
+          "module": "bases de données"
+        },
+        {
+          "etape": "appel_outil",
+          "outil": "get_calendrier",
+          "args": "{\"module\":\"bases de données\"}",
+          "resultat": "Module : bases de données. Examen : 08/01/2027 à 9h, amphi A. Rattrapage : 15/01/2027 à 9h, salle B12.",
+          "valide_par_humain": false
+        },
+        {
+          "etape": "reponse_finale"
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "categorie": "factuelle",
+      "question": "Où et quand a lieu l'examen de réseaux ?",
+      "reponse": "Examen de réseaux : 11/01/2027 à 9h, amphi B.",
+      "ok": true,
+      "raisons": [],
+      "temps": 1.1,
+      "outils": [
+        "get_calendrier"
+      ],
+      "erreurs_outils": 0,
+      "dates_inventees": [],
+      "erreur_execution": "",
+      "trace": [
+        {
+          "etape": "classification",
+          "intention": "calendrier",
+          "module": "réseaux"
+        },
+        {
+          "etape": "appel_outil",
+          "outil": "get_calendrier",
+          "args": "{\"module\":\"réseaux\"}",
+          "resultat": "Module : réseaux. Examen : 11/01/2027 à 9h, amphi B. Rattrapage : 18/01/2027 à 9h, salle B14.",
+          "valide_par_humain": false
+        },
+        {
+          "etape": "reponse_finale"
+        }
+      ]
+    }
+  ]
+}

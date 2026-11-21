@@ -1,0 +1,77 @@
+{
+  "modele": "openai/gpt-oss-120b",
+  "date": "2026-11-21 21:25",
+  "interrompu": false,
+  "resume": {
+    "total": 2,
+    "reussis": 2,
+    "taux": 100.0,
+    "par_categorie": {
+      "absente": {
+        "reussis": 2,
+        "total": 2
+      }
+    },
+    "temps_moyen_s": 9.5,
+    "questions_avec_date_inventee": 0,
+    "erreurs_outils": 0,
+    "erreurs_execution": 0
+  },
+  "resultats": [
+    {
+      "id": 27,
+      "categorie": "absente",
+      "question": "Quels sont les horaires d'ouverture de la bibliothèque ?",
+      "reponse": "Je ne sais pas : cette information n'est pas dans le règlement ou le calendrier.",
+      "ok": true,
+      "raisons": [],
+      "temps": 18.2,
+      "outils": [
+        "rechercher_reglement"
+      ],
+      "erreurs_outils": 0,
+      "dates_inventees": [],
+      "erreur_execution": "",
+      "trace": [
+        {
+          "etape": "classification",
+          "intention": "reglement",
+          "module": null
+        },
+        {
+          "etape": "appel_outil",
+          "outil": "rechercher_reglement",
+          "args": "{\"question\":\"horaires bibliothèque\"}",
+          "resultat": "[Article 4] Chapitre 2 : Certificat médical | Article 4. Délai. Le certificat médical est remis à la scolarité dans un délai de 3 jours ouvrables (du lundi au vendredi) à compter du jour de l'examen manqué. Le jour de l'examen n'est pas compté.\n\n[Article 6] Chapitre 2 : Certificat médical | Article 6. Force majeure. En cas d'hospitalisation, le délai de l'article 4 est porté à 7 jours ouvrables, sur présentation du bulletin d'hospitalisation.\n\n[Article 7] Chapitre 3 : Examens et rattrapages | Article 7. Session de rattrapage. Un étudiant dont l'absence a été justifiée selon les articles 4 à 6 passe l'examen à la session de rattrapage, aux dates du calendrier officiel.\n\n[Article 10] Chapitre 3 : Examens et rattrapages | Article 10. Modules sans rattrapage. Les modules évalués uniquement par projet ne comportent pas de session de rattrapage. Le calendrier précise ces modules.\n\n[Article 15] Chapitre 5 : Dispositions finales | Article 15. Réclamations. Toute réclamation sur une note est adressée par écrit au responsable de scolarité dans les 5 jours ouvrables suivant la publication des résultats.",
+          "valide_par_humain": false
+        },
+        {
+          "etape": "reponse_finale"
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "categorie": "absente",
+      "question": "Comment s'appelle le responsable de la scolarité ?",
+      "reponse": "Je ne sais pas : cette information n'est pas dans le règlement ou le calendrier.",
+      "ok": true,
+      "raisons": [],
+      "temps": 0.8,
+      "outils": [],
+      "erreurs_outils": 0,
+      "dates_inventees": [],
+      "erreur_execution": "",
+      "trace": [
+        {
+          "etape": "classification",
+          "intention": "reglement",
+          "module": null
+        },
+        {
+          "etape": "reponse_finale"
+        }
+      ]
+    }
+  ]
+}

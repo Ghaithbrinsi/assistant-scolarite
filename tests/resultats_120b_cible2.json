@@ -1,0 +1,97 @@
+{
+  "modele": "openai/gpt-oss-120b",
+  "date": "2026-11-21 21:10",
+  "interrompu": false,
+  "resume": {
+    "total": 3,
+    "reussis": 0,
+    "taux": 0.0,
+    "par_categorie": {
+      "absente": {
+        "reussis": 0,
+        "total": 3
+      }
+    },
+    "temps_moyen_s": 2.1,
+    "questions_avec_date_inventee": 0,
+    "erreurs_outils": 0,
+    "erreurs_execution": 0
+  },
+  "resultats": [
+    {
+      "id": 25,
+      "categorie": "absente",
+      "question": "Quel est le montant de la bourse ?",
+      "reponse": "Je ne peux répondre qu'aux questions sur le règlement des études et le calendrier des examens.",
+      "ok": false,
+      "raisons": [
+        "« je ne sais pas » attendu"
+      ],
+      "temps": 4.4,
+      "outils": [],
+      "erreurs_outils": 0,
+      "dates_inventees": [],
+      "erreur_execution": "",
+      "trace": [
+        {
+          "etape": "classification",
+          "intention": "reglement",
+          "module": null
+        },
+        {
+          "etape": "reponse_finale"
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "categorie": "absente",
+      "question": "Quels sont les horaires d'ouverture de la bibliothèque ?",
+      "reponse": "Je ne peux répondre qu'aux questions sur le règlement des études et le calendrier des examens.",
+      "ok": false,
+      "raisons": [
+        "« je ne sais pas » attendu"
+      ],
+      "temps": 0.9,
+      "outils": [],
+      "erreurs_outils": 0,
+      "dates_inventees": [],
+      "erreur_execution": "",
+      "trace": [
+        {
+          "etape": "classification",
+          "intention": "reglement",
+          "module": null
+        },
+        {
+          "etape": "reponse_finale"
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "categorie": "absente",
+      "question": "Comment s'appelle le responsable de la scolarité ?",
+      "reponse": "Je ne peux répondre qu'aux questions sur le règlement des études et le calendrier des examens.",
+      "ok": false,
+      "raisons": [
+        "« je ne sais pas » attendu"
+      ],
+      "temps": 0.9,
+      "outils": [],
+      "erreurs_outils": 0,
+      "dates_inventees": [],
+      "erreur_execution": "",
+      "trace": [
+        {
+          "etape": "classification",
+          "intention": "reglement",
+          "module": null
+        },
+        {
+          "etape": "reponse_finale"
+        }
+      ]
+    }
+  ]
+}

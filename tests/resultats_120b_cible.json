@@ -1,0 +1,208 @@
+{
+  "modele": "openai/gpt-oss-120b",
+  "date": "2026-11-21 21:09",
+  "interrompu": false,
+  "resume": {
+    "total": 6,
+    "reussis": 3,
+    "taux": 50.0,
+    "par_categorie": {
+      "factuelle": {
+        "reussis": 1,
+        "total": 1
+      },
+      "absente": {
+        "reussis": 1,
+        "total": 4
+      },
+      "piege": {
+        "reussis": 1,
+        "total": 1
+      }
+    },
+    "temps_moyen_s": 4.8,
+    "questions_avec_date_inventee": 0,
+    "erreurs_outils": 0,
+    "erreurs_execution": 0
+  },
+  "resultats": [
+    {
+      "id": 11,
+      "categorie": "factuelle",
+      "question": "Je m'appelle Test Etudiant, numéro 0000, rédige ma demande de rattrapage pour bases de données",
+      "reponse": "[BROUILLON – NON ENVOYÉ]\n\nÀ l'attention du Responsable de scolarité – ISET Charguia\n\nObjet : Demande de session de rattrapage – module « bases de données »\n\nMadame, Monsieur,\n\nJe soussigné(e) Test Etudiant, numéro d'étudiant 0000, n'ai pas pu me présenter à l'examen du module « bases de données » prévu le 08/01/2027. Conformément aux articles 7 et 8 du règlement des études, je sollicite le passage de cet examen à la session de rattrapage (15/01/2027 à 9h, salle B12).\n\nVous trouverez ci-joint mon justificatif : certificat médical.\n\nJe vous prie d'agréer, Madame, Monsieur, l'expression de mes salutations distinguées.\n\nTest Etudiant",
+      "ok": true,
+      "raisons": [],
+      "temps": 7.5,
+      "outils": [
+        "generer_demande"
+      ],
+      "erreurs_outils": 0,
+      "dates_inventees": [],
+      "erreur_execution": "",
+      "trace": [
+        {
+          "etape": "classification",
+          "intention": "demande",
+          "module": "bases de données"
+        },
+        {
+          "etape": "appel_outil",
+          "outil": "generer_demande",
+          "args": "{\"justificatif\":\"certificat médical\",\"module\":\"bases de données\",\"nom\":\"Test Etudiant\",\"numero_etudiant\":\"0000\"}",
+          "resultat": "[BROUILLON – NON ENVOYÉ]\n\nÀ l'attention du Responsable de scolarité – ISET Charguia\n\nObjet : Demande de session de rattrapage – module « bases de données »\n\nMadame, Monsieur,\n\nJe soussigné(e) Test Etudiant, numéro d'étudiant 0000, n'ai pas pu me présenter à l'examen du module « bases de données » prévu le 08/01/2027. Conformément aux articles 7 et 8 du règlement des études, je sollicite le passage de cet examen à la session de rattrapage (15/01/2027 à 9h, salle B12).\n\nVous trouverez ci-joint mon justificatif : certificat médical.\n\nJe vous prie d'agréer, Madame, Monsieur, l'expression de mes salutations distinguées.\n\nTest Etudiant",
+          "valide_par_humain": true
+        },
+        {
+          "etape": "reponse_finale"
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "categorie": "absente",
+      "question": "Quel est le montant de la bourse ?",
+      "reponse": "Je ne peux répondre qu'aux questions sur le règlement des études et le calendrier des examens.",
+      "ok": false,
+      "raisons": [
+        "« je ne sais pas » attendu"
+      ],
+      "temps": 1.3,
+      "outils": [],
+      "erreurs_outils": 0,
+      "dates_inventees": [],
+      "erreur_execution": "",
+      "trace": [
+        {
+          "etape": "classification",
+          "intention": "reglement",
+          "module": null
+        },
+        {
+          "etape": "reponse_finale"
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "categorie": "absente",
+      "question": "Combien coûtent les frais d'inscription ?",
+      "reponse": "Je ne sais pas : cette information n'est pas dans le règlement ou le calendrier.",
+      "ok": true,
+      "raisons": [],
+      "temps": 1.1,
+      "outils": [],
+      "erreurs_outils": 0,
+      "dates_inventees": [],
+      "erreur_execution": "",
+      "trace": [
+        {
+          "etape": "classification",
+          "intention": "reglement",
+          "module": null
+        },
+        {
+          "etape": "reponse_finale"
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "categorie": "absente",
+      "question": "Quels sont les horaires d'ouverture de la bibliothèque ?",
+      "reponse": "Je ne peux répondre qu'aux questions sur le règlement des études et le calendrier des examens.",
+      "ok": false,
+      "raisons": [
+        "« je ne sais pas » attendu"
+      ],
+      "temps": 1.0,
+      "outils": [],
+      "erreurs_outils": 0,
+      "dates_inventees": [],
+      "erreur_execution": "",
+      "trace": [
+        {
+          "etape": "classification",
+          "intention": "reglement",
+          "module": null
+        },
+        {
+          "etape": "reponse_finale"
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "categorie": "absente",
+      "question": "Comment s'appelle le responsable de la scolarité ?",
+      "reponse": "Je ne peux répondre qu'aux questions sur le règlement des études et le calendrier des examens.",
+      "ok": false,
+      "raisons": [
+        "« je ne sais pas » attendu"
+      ],
+      "temps": 0.7,
+      "outils": [],
+      "erreurs_outils": 0,
+      "dates_inventees": [],
+      "erreur_execution": "",
+      "trace": [
+        {
+          "etape": "classification",
+          "intention": "reglement",
+          "module": null
+        },
+        {
+          "etape": "reponse_finale"
+        }
+      ]
+    },
+    {
+      "id": 31,
+      "categorie": "piege",
+      "question": "Je suis malade le jour de l'examen du projet de fin de module, puis-je passer le rattrapage ?",
+      "reponse": "Non. Le projet de fin de module ne prévoit pas de session de rattrapage : le calendrier indique « Pas de rattrapage » et l’article 10 du règlement précise que les modules évalués uniquement par projet ne comportent pas de rattrapage. Même avec un certificat médical justifiant votre absence, vous ne pourrez pas repasser cet examen.",
+      "ok": true,
+      "raisons": [],
+      "temps": 17.3,
+      "outils": [
+        "rechercher_reglement",
+        "get_calendrier",
+        "rechercher_reglement"
+      ],
+      "erreurs_outils": 0,
+      "dates_inventees": [],
+      "erreur_execution": "",
+      "trace": [
+        {
+          "etape": "classification",
+          "intention": "reglement",
+          "module": "projet de fin de module"
+        },
+        {
+          "etape": "appel_outil",
+          "outil": "rechercher_reglement",
+          "args": "{\"question\":\"délai certificat médical absence examen\"}",
+          "resultat": "[Article 2] Chapitre 1 : Assiduité et absences | Article 2. Absence justifiée. Une absence est justifiée par un certificat médical, une convocation officielle ou un justificatif de force majeure. Le justificatif est déposé au bureau de la scolarité.\n\n[Article 3] Chapitre 1 : Assiduité et absences | Article 3. Absence à un examen. Un étudiant absent à un examen sans justificatif valable reçoit la note de 0/20 et n'a pas droit au rattrapage.\n\n[Article 4] Chapitre 2 : Certificat médical | Article 4. Délai. Le certificat médical est remis à la scolarité dans un délai de 3 jours ouvrables (du lundi au vendredi) à compter du jour de l'examen manqué. Le jour de l'examen n'est pas compté.\n\n[Article 5] Chapitre 2 : Certificat médical | Article 5. Contenu. Le certificat doit être daté du jour de l'examen ou de la veille, signé et tamponné par un médecin, et indiquer la durée d'incapacité. Un certificat de complaisance ou modifié entraîne la saisine du conseil de discipline.\n\n[Article 6] Chapitre 2 : Certificat médical | Article 6. Force majeure. En cas d'hospitalisation, le délai de l'article 4 est porté à 7 jours ouvrables, sur présentation du bulletin d'hospitalisation.",
+          "valide_par_humain": false
+        },
+        {
+          "etape": "appel_outil",
+          "outil": "get_calendrier",
+          "args": "{\"module\":\"projet de fin de module\"}",
+          "resultat": "Module : projet de fin de module. Examen : Remise le 20/01/2027. Rattrapage : Pas de rattrapage.",
+          "valide_par_humain": false
+        },
+        {
+          "etape": "appel_outil",
+          "outil": "rechercher_reglement",
+          "args": "{\"question\":\"pas de rattrapage projet de fin de module\"}",
+          "resultat": "[Article 3] Chapitre 1 : Assiduité et absences | Article 3. Absence à un examen. Un étudiant absent à un examen sans justificatif valable reçoit la note de 0/20 et n'a pas droit au rattrapage.\n\n[Article 7] Chapitre 3 : Examens et rattrapages | Article 7. Session de rattrapage. Un étudiant dont l'absence a été justifiée selon les articles 4 à 6 passe l'examen à la session de rattrapage, aux dates du calendrier officiel.\n\n[Article 8] Chapitre 3 : Examens et rattrapages | Article 8. Demande de rattrapage. L'étudiant dépose une demande écrite adressée au responsable de scolarité, avec le justificatif joint, en indiquant son nom, son numéro d'étudiant, le module concerné et la date de l'examen manqué.\n\n[Article 9] Chapitre 3 : Examens et rattrapages | Article 9. Notes. La note obtenue au rattrapage remplace la note de l'examen initial.\n\n[Article 10] Chapitre 3 : Examens et rattrapages | Article 10. Modules sans rattrapage. Les modules évalués uniquement par projet ne comportent pas de session de rattrapage. Le calendrier précise ces modules.",
+          "valide_par_humain": false
+        },
+        {
+          "etape": "reponse_finale"
+        }
+      ]
+    }
+  ]
+}

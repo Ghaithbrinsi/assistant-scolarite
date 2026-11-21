@@ -31,9 +31,9 @@ def rechercher_reglement(
 
 @mcp.tool()
 def get_calendrier(module: Module) -> str:
-    """Donne la date, l'heure et la salle de l'examen et du rattrapage d'un module (session de janvier 2027)."""
+    """Donne la date, l'heure et la salle de l'examen et du rattrapage d'un module (session de janvier 2027),
+    ou la date de remise du projet de fin de module."""
     return outils.get_calendrier(module)
-
 
 @mcp.tool()
 def calculer_delai(

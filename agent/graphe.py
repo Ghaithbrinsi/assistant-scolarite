@@ -20,12 +20,24 @@ class Etat(TypedDict):
     tours: int
     reponse: str
 
+INCONNU = "Je ne sais pas : cette information n'est pas dans le règlement ou le calendrier."
+
+MOTS_ADMIN = ("bourse", "inscription", "frais", "bibliothèque", "bibliotheque", "scolarité",
+              "scolarite", "responsable", "administration", "secrétariat", "secretariat",
+              "année universitaire", "annee universitaire", "diplôme", "diplome")
+
 
 def noeud_classifier(etat: Etat):
     c = classifier(etat["question"])
+    intention = c.get("intention", "erreur")
+    q = etat["question"].lower()
+    # Filet : une question au vocabulaire administratif n'est jamais « hors sujet » ;
+    # l'agent vérifie dans les documents et répond « je ne sais pas » si besoin.
+    if intention == "hors_sujet" and any(m in q for m in MOTS_ADMIN):
+        intention = "reglement"
     trace = etat["trace"] + [{"etape": "classification",
-                              "intention": c.get("intention"), "module": c.get("module")}]
-    return {"intention": c.get("intention", "erreur"), "trace": trace}
+                              "intention": intention, "module": c.get("module")}]
+    return {"intention": intention, "trace": trace}
 
 
 def noeud_refus(etat: Etat):
@@ -47,7 +59,10 @@ def noeud_llm(etat: Etat):
             for c in msg.tool_calls]
     maj = {"messages": etat["messages"] + [assistant], "tours": etat["tours"] + 1}
     if not msg.tool_calls:
-        maj["reponse"] = nettoyer(msg.content)
+        rep = nettoyer(msg.content)
+        if etat["intention"] != "hors_sujet" and REFUS_HORS_SUJET in rep:
+            rep = INCONNU   # le refus est réservé au classifier
+        maj["reponse"] = rep
         maj["trace"] = etat["trace"] + [{"etape": "reponse_finale"}]
     return maj
 

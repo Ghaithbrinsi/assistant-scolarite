@@ -59,7 +59,7 @@ def agent(question: str, confirmer=confirmer_cli):
                 {"role": "user", "content": question}]
     trace = []
 
-    for tour in range(MAX_TOURS):
+    for _ in range(MAX_TOURS):
         # LE MODÈLE DÉCIDE ICI
         msg = client.chat.completions.create(
             model=MODEL, messages=messages, tools=get_tools(), temperature=0
