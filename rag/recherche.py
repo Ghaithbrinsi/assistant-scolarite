@@ -17,11 +17,12 @@ def chercher(question: str, k: int = 3) -> list[dict]:
     ]
 
 
-def rechercher_reglement(question: str, k: int = 3) -> str:
+def rechercher_reglement(question: str, k: int = 5) -> str:
     """Version pour le modèle : texte des articles les plus proches."""
     resultats = chercher(question, k)
     if SEUIL is not None:
         resultats = [r for r in resultats if r["distance"] <= SEUIL]
     if not resultats:
         return "Aucun article pertinent trouvé dans le règlement."
+    resultats.sort(key=lambda r: r["article"])   # ordre des articles, plus lisible
     return "\n\n".join(f"[Article {r['article']}] {r['texte']}" for r in resultats)

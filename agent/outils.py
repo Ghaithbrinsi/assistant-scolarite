@@ -105,10 +105,13 @@ def _outil(nom, description, proprietes, requis):
 MODULE_DESC = "Nom du module : algorithmique, bases de données, réseaux, anglais ou projet de fin de module"
 
 TOOLS = [
-    _outil("rechercher_reglement",
+     _outil("rechercher_reglement",
            "Cherche dans le règlement des études les articles pertinents (absences, certificat médical, "
            "rattrapage, stage, réclamation). Renvoie le texte des articles avec leur numéro.",
-           {"question": {"type": "string", "description": "La question de l'étudiant, reformulée si besoin"}},
+           {"question": {"type": "string",
+                         "description": "Mots-clés de recherche, pas la phrase entière. "
+                                        "Exemples : 'délai certificat médical absence examen', "
+                                        "'durée stage', 'conditions rattrapage'"}},
            ["question"]),
     _outil("get_calendrier",
            "Donne la date, l'heure et la salle de l'examen et du rattrapage d'un module (session de janvier 2027).",
