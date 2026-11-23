@@ -93,7 +93,7 @@ def noeud_outils(etat: Etat):
 
 
 def apres_classifier(etat: Etat):
-    return "refus" if etat["intention"] == "hors_sujet" else "llm"
+    return "llm"
 
 
 def apres_llm(etat: Etat):

@@ -1,0 +1,75 @@
+{
+  "id": "e815bdcad66641c78c8fafafb3b7ea35",
+  "title": "chnowa el délai mta3 certificat médical ",
+  "updated": 1795465350.820666,
+  "messages": [
+    {
+      "role": "user",
+      "content": "chnowa el délai mta3 certificat médical ?"
+    },
+    {
+      "role": "assistant",
+      "content": "المدة هي 3 أيام عمل (du lundi au vendredi) بعد يوم الامتحان.  \nEn cas d’hospitalisation, le délai passe à 7 jours ouvrables.  \n📖 Source : Article 4 du règlement.",
+      "trace": [
+        {
+          "etape": "classification",
+          "intention": "reglement",
+          "module": null
+        },
+        {
+          "etape": "appel_outil",
+          "outil": "rechercher_reglement",
+          "args": "{\"question\":\"délai certificat médical absence examen\"}",
+          "resultat": "[Article 2] Chapitre 1 : Assiduité et absences | Article 2. Absence justifiée. Une absence est justifiée par un certificat médical, une convocation officielle ou un justificatif de force majeure. Le justificatif est déposé au bureau de la scolarité.\n\n[Article 3] Chapitre 1 : Assiduité et absences | Article 3. Absence à un examen. Un étudiant absent à un examen sans justificatif valable reçoit la note de 0/20 et n'a pas droit au rattrapage.\n\n[Article 4] Chapitre 2 : Certificat médical | Article 4. Délai. Le certificat médical est remis à la scolarité dans un délai de 3 jours ouvrables (du lundi au vendredi) à compter du jour de l'examen manqué. Le jour de l'examen n'est pas compté.\n\n[Article 5] Chapitre 2 : Certificat médical | Article 5. Contenu. Le certificat doit être daté du jour de l'examen ou de la veille, signé et tamponné par un médecin, et indiquer la durée d'incapacité. Un certificat de complaisance ou modifié entraîne la saisine du conseil de discipline.\n\n[Article 6] Chapitre 2 : Certificat médical | Article 6. Force majeure. En cas d'hospitalisation, le délai de l'article 4 est porté à 7 jours ouvrables, sur présentation du bulletin d'hospitalisation.",
+          "valide_par_humain": false
+        },
+        {
+          "etape": "reponse_finale"
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "content": "salem alaikom"
+    },
+    {
+      "role": "assistant",
+      "content": "وعليكم السلام!  \nJe suis l’assistant de scolarité de l’ISET Charguia. Je peux vous aider à consulter le règlement des études, le calendrier des examens, les délais de certificat médical, etc.",
+      "trace": [
+        {
+          "etape": "classification",
+          "intention": "hors_sujet",
+          "module": null
+        },
+        {
+          "etape": "reponse_finale"
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "content": "when is the exam"
+    },
+    {
+      "role": "assistant",
+      "content": "The exam for the algorithmique module is on 05 January 2027 at 9 am in amphitheater A.  \nThis is the scheduled date for the first session; the retake is on 13 January 2027 at 2 pm in room B10.  \n📅 Source : calendrier des examens",
+      "trace": [
+        {
+          "etape": "classification",
+          "intention": "calendrier",
+          "module": null
+        },
+        {
+          "etape": "appel_outil",
+          "outil": "get_calendrier",
+          "args": "{\"module\":\"algorithmique\"}",
+          "resultat": "Module : algorithmique. Examen : 05/01/2027 à 9h, amphi A. Rattrapage : 13/01/2027 à 14h, salle B10.",
+          "valide_par_humain": false
+        },
+        {
+          "etape": "reponse_finale"
+        }
+      ]
+    }
+  ]
+}

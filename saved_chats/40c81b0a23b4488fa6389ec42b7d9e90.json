@@ -1,0 +1,78 @@
+{
+  "id": "40c81b0a23b4488fa6389ec42b7d9e90",
+  "title": "chnowa el délai mta3 certificat médical ",
+  "updated": 1795467723.1604905,
+  "messages": [
+    {
+      "role": "user",
+      "content": "chnowa el délai mta3 certificat médical ?"
+    },
+    {
+      "role": "assistant",
+      "content": "المدة هي 3 أيام عمل من تاريخ الامتحان، و7 أيام عمل إذا كنت متوبّلة في المستشفى.  \n📖 Source : Article 4 (certificat médical)",
+      "trace": [
+        {
+          "etape": "classification",
+          "intention": "reglement",
+          "module": null
+        },
+        {
+          "etape": "appel_outil",
+          "outil": "rechercher_reglement",
+          "args": "{\"question\":\"délai certificat médical\"}",
+          "resultat": "[Article 2] Chapitre 1 : Assiduité et absences | Article 2. Absence justifiée. Une absence est justifiée par un certificat médical, une convocation officielle ou un justificatif de force majeure. Le justificatif est déposé au bureau de la scolarité.\n\n[Article 4] Chapitre 2 : Certificat médical | Article 4. Délai. Le certificat médical est remis à la scolarité dans un délai de 3 jours ouvrables (du lundi au vendredi) à compter du jour de l'examen manqué. Le jour de l'examen n'est pas compté.\n\n[Article 5] Chapitre 2 : Certificat médical | Article 5. Contenu. Le certificat doit être daté du jour de l'examen ou de la veille, signé et tamponné par un médecin, et indiquer la durée d'incapacité. Un certificat de complaisance ou modifié entraîne la saisine du conseil de discipline.\n\n[Article 6] Chapitre 2 : Certificat médical | Article 6. Force majeure. En cas d'hospitalisation, le délai de l'article 4 est porté à 7 jours ouvrables, sur présentation du bulletin d'hospitalisation.\n\n[Article 11] Chapitre 4 : Stages | Article 11. Durée. Le stage de fin d'année dure 8 semaines minimum.",
+          "valide_par_humain": false
+        },
+        {
+          "etape": "reponse_finale"
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "content": "donner les rattrapages"
+    },
+    {
+      "role": "assistant",
+      "content": "Voici les dates de rattrapage pour chaque module :\n\n| Module | Date | Heure | Salle |\n|--------|------|-------|-------|\n| Algorithmique | 13/01/2027 | 14h | B10 |\n| Bases de données | 15/01/2027 | 9h | B12 |\n| Réseaux | 18/01/2027 | 9h | B14 |\n| Anglais | 19/01/2027 | 10h | B11 |\n\n📅 Source : calendrier des examens",
+      "trace": [
+        {
+          "etape": "classification",
+          "intention": "reglement",
+          "module": null
+        },
+        {
+          "etape": "appel_outil",
+          "outil": "get_calendrier",
+          "args": "{\"module\":\"algorithmique\"}",
+          "resultat": "Module : algorithmique. Examen : 05/01/2027 à 9h, amphi A. Rattrapage : 13/01/2027 à 14h, salle B10.",
+          "valide_par_humain": false
+        },
+        {
+          "etape": "appel_outil",
+          "outil": "get_calendrier",
+          "args": "{\"module\":\"bases de données\"}",
+          "resultat": "Module : bases de données. Examen : 08/01/2027 à 9h, amphi A. Rattrapage : 15/01/2027 à 9h, salle B12.",
+          "valide_par_humain": false
+        },
+        {
+          "etape": "appel_outil",
+          "outil": "get_calendrier",
+          "args": "{\"module\":\"réseaux\"}",
+          "resultat": "Module : réseaux. Examen : 11/01/2027 à 9h, amphi B. Rattrapage : 18/01/2027 à 9h, salle B14.",
+          "valide_par_humain": false
+        },
+        {
+          "etape": "appel_outil",
+          "outil": "get_calendrier",
+          "args": "{\"module\":\"anglais\"}",
+          "resultat": "Module : anglais. Examen : 12/01/2027 à 14h, salle B11. Rattrapage : 19/01/2027 à 10h, salle B11.",
+          "valide_par_humain": false
+        },
+        {
+          "etape": "reponse_finale"
+        }
+      ]
+    }
+  ]
+}

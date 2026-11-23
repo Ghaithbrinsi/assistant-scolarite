@@ -1,0 +1,32 @@
+{
+  "id": "2c706f3536f34389aa5253c58a2adc02",
+  "title": "When is the networks exam?",
+  "updated": 1795467716.080663,
+  "messages": [
+    {
+      "role": "user",
+      "content": "When is the networks exam?"
+    },
+    {
+      "role": "assistant",
+      "content": "The networks exam is on **11 January 2027 at 9 am in amphitheater B**.  \nThe retake will be on 18 January 2027 at 9 am in room B14.  \n📅 Source : calendrier des examens",
+      "trace": [
+        {
+          "etape": "classification",
+          "intention": "calendrier",
+          "module": "réseaux"
+        },
+        {
+          "etape": "appel_outil",
+          "outil": "get_calendrier",
+          "args": "{\"module\":\"réseaux\"}",
+          "resultat": "Module : réseaux. Examen : 11/01/2027 à 9h, amphi B. Rattrapage : 18/01/2027 à 9h, salle B14.",
+          "valide_par_humain": false
+        },
+        {
+          "etape": "reponse_finale"
+        }
+      ]
+    }
+  ]
+}

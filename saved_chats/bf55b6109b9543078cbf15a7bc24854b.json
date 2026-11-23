@@ -1,0 +1,32 @@
+{
+  "id": "bf55b6109b9543078cbf15a7bc24854b",
+  "title": "Quel est le délai du certificat médical ",
+  "updated": 1795465979.4933126,
+  "messages": [
+    {
+      "role": "user",
+      "content": "Quel est le délai du certificat médical ?"
+    },
+    {
+      "role": "assistant",
+      "content": "Le certificat médical doit être remis à la scolarité dans un délai de **3 jours ouvrables** à compter du jour de l’examen manqué (le jour de l’examen n’est pas compté). En cas d’hospitalisation, ce délai passe à **7 jours ouvrables** sur présentation du bulletin d’hospitalisation.  \n\n📖 Source : Article 4 du règlement des études.",
+      "trace": [
+        {
+          "etape": "classification",
+          "intention": "reglement",
+          "module": null
+        },
+        {
+          "etape": "appel_outil",
+          "outil": "rechercher_reglement",
+          "args": "{\"question\":\"délai certificat médical\"}",
+          "resultat": "[Article 2] Chapitre 1 : Assiduité et absences | Article 2. Absence justifiée. Une absence est justifiée par un certificat médical, une convocation officielle ou un justificatif de force majeure. Le justificatif est déposé au bureau de la scolarité.\n\n[Article 4] Chapitre 2 : Certificat médical | Article 4. Délai. Le certificat médical est remis à la scolarité dans un délai de 3 jours ouvrables (du lundi au vendredi) à compter du jour de l'examen manqué. Le jour de l'examen n'est pas compté.\n\n[Article 5] Chapitre 2 : Certificat médical | Article 5. Contenu. Le certificat doit être daté du jour de l'examen ou de la veille, signé et tamponné par un médecin, et indiquer la durée d'incapacité. Un certificat de complaisance ou modifié entraîne la saisine du conseil de discipline.\n\n[Article 6] Chapitre 2 : Certificat médical | Article 6. Force majeure. En cas d'hospitalisation, le délai de l'article 4 est porté à 7 jours ouvrables, sur présentation du bulletin d'hospitalisation.\n\n[Article 11] Chapitre 4 : Stages | Article 11. Durée. Le stage de fin d'année dure 8 semaines minimum.",
+          "valide_par_humain": false
+        },
+        {
+          "etape": "reponse_finale"
+        }
+      ]
+    }
+  ]
+}
